@@ -37,6 +37,9 @@ if ($gd->check_version) {
     say 'Database is already latest';
 } else {
     print $gd->diff . "\n";
-    $gd->upgrade_database;
-    say 'done migrate';
+    if ($options{'dry-run'}) {
+        $gd->upgrade_database;
+        say 'done migrate';
+    }
+
 }
