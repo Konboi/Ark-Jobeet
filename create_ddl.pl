@@ -5,16 +5,14 @@ use utf8;
 
 use lib 'lib';
 
-use Jobeet::Schema;
-use SQL::Translator;
+use Jobeet::Models;
 use DBIx::Class::Optional::Dependencies;
 use Path::Class;
 
-my $schema = Jobeet::Schema->connect('dbi:SQLite:./test.db');
-my $sql_file = './schema.sql';
+my $sql_file = models('home') . '/sql/schema.sql';
 my $file     = Path::Class::file($sql_file);
 
-my $output = $schema->deployment_statements(
+my $output = models('Schema')->deployment_statements(
     undef, undef, undef, {
         no_comments    => 1,
         add_drop_table => 1,
