@@ -5,12 +5,18 @@ use utf8;
 use lib 'lib';
 
 use Jobeet::Models;
+use Getopt::Long;
 use GitDDL;
+
+GetOptions(
+    \my %options,
+    qw/dry-run/
+);
 
 my $dsn = models('conf')->{database}->[0];
 my $gd = GitDDL->new(
-    work_tree => './',
-    ddl_file  => './schema.sql',
+    work_tree => '',
+    ddl_file  => models('home') . '/sql/schema.sql',
     dsn       => models('conf')->{database},
 );
 
