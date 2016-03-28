@@ -15,6 +15,12 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->add_unique_constraint(['name']);
 
-1;
+__PACKAGE__->has_many(
+    jobs => 'Jobeet::Schema::Result::Job', 'category_id'
+);
+
+__PACKAGE__->has_many(
+    category_affiliate => 'Jobeet::Schema::Result::CategoryAffiliate', 'category_id'
+);
 
 1;

@@ -40,5 +40,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->add_unique_constraint(['token']);
 
+__PACKAGE__->belongs_to(
+    category => 'Jobeet::Schema::Result::Category', 'category_id'
+);
 
 1;
