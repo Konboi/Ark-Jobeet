@@ -16,7 +16,11 @@ __PACKAGE__->set_primary_key('id');
 __PACKAGE__->add_unique_constraint(['name']);
 
 __PACKAGE__->has_many(
-    jobs => 'Jobeet::Schema::Result::Job', 'category_id'
+    jobs => 'Jobeet::Schema::Result::Job', 'category_id',
+{
+    is_foreign_key_constraint   => 0,
+    cascade_delete              => 0,
+},
 );
 
 __PACKAGE__->has_many(
