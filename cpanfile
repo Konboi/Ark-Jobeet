@@ -1,4 +1,5 @@
 requires 'Ark';
+requires 'Data::Page::Navigation';
 requires 'DateTime';
 requires 'DateTime::Format::SQLite';
 requires 'DBIx::Class';
