@@ -35,6 +35,21 @@ __PACKAGE__->add_columns(
     expires_at   => DATETIME,
     created_at   => DATETIME,
     updated_at   => DATETIME,
+    company => {
+        data_type   => 'VARCHAR',
+        size        => 255,
+        is_nullable => 1,
+    },
+    logo => {
+        data_type   => 'VARCHAR',
+        size        => 255,
+        is_nullable => 1,
+    },
+    url => {
+        data_type   => 'VARCHAR',
+        size        => 255,
+        is_nullable => 1,
+    },
 );
 
 __PACKAGE__->set_primary_key('id');
