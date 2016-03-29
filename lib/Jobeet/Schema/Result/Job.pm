@@ -6,6 +6,7 @@ use utf8;
 
 use parent 'Jobeet::Schema::ResultBase';
 
+use Jobeet::Models;
 use Jobeet::Schema::Types;
 
 __PACKAGE__->table('jobeet_job');
