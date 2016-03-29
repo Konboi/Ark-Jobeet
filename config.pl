@@ -9,4 +9,5 @@ return {
     ],
 
     default_view => 'MT',
+    active_days  => 30,
 };
