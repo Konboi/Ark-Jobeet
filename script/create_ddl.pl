@@ -15,7 +15,7 @@ my $file     = Path::Class::file($sql_file);
 my $output = models('Schema')->deployment_statements(
     undef, undef, undef, {
         no_comments    => 1,
-        add_drop_table => 1,
+        add_drop_table => 0,
     }
 );
 
