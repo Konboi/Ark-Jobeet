@@ -7,6 +7,7 @@ use parent 'Jobeet::Schema::ResultBase';
 use Jobeet::Models;
 use Jobeet::Schema::Types;
 
+use String::CamelCase qw(decamelize);
 
 __PACKAGE__->table('jobeet_category');
 
@@ -46,6 +47,24 @@ sub get_active_jobs {
           rows       => $attr->{rows},
         }
     );
+}
+
+sub insert {
+    my $self = shift;
+
+    $self->slug( decamelize $self->name );
+
+    $self->next::method(@_);
+}
+
+sub update {
+    my $self = shift;
+
+    if ($self->is_column_changed('name')) {
+        $self->slug( decamelize $self->name );
+    }
+
+    $self->next::method(@_);
 }
 
 1;
