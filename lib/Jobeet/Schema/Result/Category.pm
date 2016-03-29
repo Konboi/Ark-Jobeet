@@ -39,12 +39,10 @@ sub get_active_jobs {
     my $self = shift;
     my $attr = shift || {};
 
-    $attr->{rows} ||= models('conf')->{max_jobs_on_homepage};
-
     $self->jobs(
         { expires_at => { '>=', models('Schema')->now } },
         { order_by   => { -desc => 'created_at' },
-          rows       => $attr->{rows},
+          defined $attr->{rows} ? (rows => $attr->{rows}) : (),
         }
     );
 }
