@@ -3,7 +3,10 @@ use v5.18.4;
 use strict;
 use warnings;
 use parent 'Jobeet::Schema::ResultBase';
+
+use Jobeet::Models;
 use Jobeet::Schema::Types;
+
 
 __PACKAGE__->table('jobeet_category');
 
@@ -26,5 +29,14 @@ __PACKAGE__->has_many(
 __PACKAGE__->has_many(
     category_affiliate => 'Jobeet::Schema::Result::CategoryAffiliate', 'category_id'
 );
+
+sub get_active_jobs {
+    my $self = shift;
+
+    $self->jobs(
+        { expires_at => { '>=', models('Schema')->now } },
+        { order_by   => { -desc => 'created_at' } }
+    );
+}
 
 1;
