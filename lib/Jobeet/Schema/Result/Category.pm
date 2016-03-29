@@ -34,7 +34,7 @@ sub get_active_jobs {
     my $self = shift;
     my $attr = shift || {};
 
-    $attr->{rows} ||= 10;
+    $attr->{rows} ||= models('conf')->{max_jobs_on_homepage};
 
     $self->jobs(
         { expires_at => { '>=', models('Schema')->now } },

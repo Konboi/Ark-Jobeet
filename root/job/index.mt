@@ -18,6 +18,7 @@
 
   <table class="jobs">
 ? my $i = 0;
+? my $max_rows = $c->config->{max_jobs_on_homepage};
 ? for my $job ($category->get_active_jobs) {
     <tr class="<?= $i++ % 2 ? 'even' : 'odd' ?>">
       <td class="location">
