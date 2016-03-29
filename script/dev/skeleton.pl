@@ -57,7 +57,7 @@ die "no definition for $type" unless $config;
 my @dirs = @{$config->{dirs}};
 my $ext = $config->{ext} || 'pm';
 
-$name = camelize $name if $type ~~ [qw/controller schema/];
+$name = camelize $name if (grep {$type eq $_ } @{[qw/controller schema/]});
 my $decamelized = decamelize($name);
 $decamelized =~ s!::!/!g;
 
