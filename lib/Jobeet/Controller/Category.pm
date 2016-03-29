@@ -10,6 +10,10 @@ sub show :Path :Args(1) {
         or $c->detach('/default');
 
     $c->stash->{category} = $category;
+    $c->stash->{jobs}     = $category->get_active_jobs({
+        rows => models('conf')->{max_jobs_on_category},
+        page => $c->req->parameters->{page} || 1,
+    });
 }
 
 1;

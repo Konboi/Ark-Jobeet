@@ -42,7 +42,8 @@ sub get_active_jobs {
     $self->jobs(
         { expires_at => { '>=', models('Schema')->now } },
         { order_by   => { -desc => 'created_at' },
-          defined $attr->{rows} ? (rows => $attr->{rows}) : (),
+          defined $attr->{rows} ? (rows => $attr->{rows}) : models('conf')->{max_jobs_on_category},
+          defined $attr->{page} ? (page => $attr->{page}) : (),
         }
     );
 }
