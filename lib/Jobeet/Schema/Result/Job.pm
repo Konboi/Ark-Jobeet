@@ -9,6 +9,9 @@ use parent 'Jobeet::Schema::ResultBase';
 use Jobeet::Models;
 use Jobeet::Schema::Types;
 
+use Digest::SHA1 qw/sha1_hex/;
+use Data::UUID;
+
 __PACKAGE__->table('jobeet_job');
 
 __PACKAGE__->add_columns(
@@ -60,6 +63,8 @@ sub insert {
     $self->expires_at(models('Schema')->now->add(
         days => models('conf')->{active_days},
     ));
+    $self->token( sha1_hex(Data::UUID->new->create) );
+
     $self->next::method(@_);
 }
 
