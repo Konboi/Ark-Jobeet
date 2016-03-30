@@ -1,15 +1,15 @@
-    package Jobeet::Controller::Search;
-    use Ark 'Controller';
+package Jobeet::Controller::Search;
+use Ark 'Controller';
 
-    use Jobeet::Models;
+use Jobeet::Models;
 
-    sub index :Path {
-        my ($self, $c) = @_;
+sub index :Path {
+    my ($self, $c) = @_;
 
-        my $query = $c->req->param('q')
-            or $c->detach('/default');
+    my $query = $c->req->param('q')
+        or $c->detach('/default');
 
-        $c->stash->{jobs} = models('Schema::Job')->search_fulltext($query);
-    }
+    $c->stash->{jobs} = models('Schema::Job')->search_fulltext($query);
+}
 
-    1;
+1;
