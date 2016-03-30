@@ -68,6 +68,11 @@ sub insert {
     $self->next::method(@_);
 }
 
+sub publish {
+    my ($self) = @_;
+    $self->update({ is_activated => 1 });
+}
+
 sub is_expired {
     my ($self) = @_;
     $self->days_before_expired < 0;
