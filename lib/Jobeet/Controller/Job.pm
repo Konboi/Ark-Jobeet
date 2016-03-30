@@ -10,9 +10,12 @@ sub index :Path {
     $c->stash->{categories} = models('Schema::Category')->get_with_jobs;
 }
 
-# /job/{job_id} （詳細）
+# /job/{job_toekn} （詳細）
 sub show :Path :Args(1) {
-    my ($self, $c, $job_id) = @_;
+    my ($self, $c, $job_token) = @_;
+
+    $c->stash->{job} = models('Schema::Job')->find({ token => $job_token })
+        or $c->detach('/default');
 }
 
 # /job/create （新規作成）
