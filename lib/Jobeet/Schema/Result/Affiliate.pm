@@ -28,6 +28,10 @@ __PACKAGE__->has_many(
     category_affiliate => 'Jobeet::Schema::Result::CategoryAffiliate', 'affiliate_id'
 );
 
+__PACKAGE__->many_to_many(
+    categories => category_affiliate => 'category'
+);
+
 sub insert {
     my $self = shift;
 
