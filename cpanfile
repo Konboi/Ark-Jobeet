@@ -1,4 +1,5 @@
 requires 'Ark';
+requires 'Cache::FastMmap';
 requires 'CGI::Simple';
 requires 'Data::Page::Navigation';
 requires 'DateTime';
