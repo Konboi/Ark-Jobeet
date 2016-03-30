@@ -80,6 +80,11 @@ sub publish :Chained('job') :PathPart {
     $c->redirect( $c->uri_for('/job', $job->token) );
 }
 
+sub atom :Local {
+    my ($self, $c) = @_;
+    $c->res->content_type('application/atom+xml; charset=utf-8');
+}
+
 1;
 
 __PACKAGE__->meta->make_immutable;
