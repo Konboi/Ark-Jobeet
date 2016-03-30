@@ -9,6 +9,7 @@ requires 'DBIx::Class';
 requires 'FindBin::libs';
 requires 'GitDDL';
 requires 'JSON::Any';
+requires 'Locale::Maketext::Lexicon';
 requires 'Path::Class';
 requires 'SQL::Translator';
 requires 'String::CamelCase';
