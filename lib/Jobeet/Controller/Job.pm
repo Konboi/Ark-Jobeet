@@ -20,6 +20,11 @@ sub create :Local :Form('Jobeet::Form::Job') {
     my ($self, $c) = @_;
 
     $c->stash->{form} = $self->form;
+
+    if ($c->req->method eq 'POST' and $self->form->submitted_and_valid) {
+        my $job = models('Schema::Job')->create_from_form($self->form);
+        $c->redirect( $c->uri_for('/job', $job->token) );
+    }
 }
 
 sub job :Chained('/') :PathPart :CaptureArgs(1) {
