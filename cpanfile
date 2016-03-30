@@ -8,6 +8,7 @@ requires 'DateTime::Format::W3CDTF';
 requires 'DBIx::Class';
 requires 'FindBin::libs';
 requires 'GitDDL';
+requires 'JSON::Any';
 requires 'Path::Class';
 requires 'SQL::Translator';
 requires 'String::CamelCase';
