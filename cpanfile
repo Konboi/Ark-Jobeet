@@ -1,4 +1,5 @@
 requires 'Ark';
+requires 'Ark::Plugin::I18N';
 requires 'Cache::FastMmap';
 requires 'CGI::Simple';
 requires 'Data::Page::Navigation';
