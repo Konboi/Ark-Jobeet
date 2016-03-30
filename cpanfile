@@ -1,4 +1,5 @@
 requires 'Ark';
+requires 'CGI::Simple';
 requires 'Data::Page::Navigation';
 requires 'DateTime';
 requires 'DateTime::Format::SQLite';
