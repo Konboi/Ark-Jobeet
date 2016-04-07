@@ -21,6 +21,11 @@ CREATE UNIQUE INDEX jobeet_category_name ON jobeet_category (name);
 
 CREATE UNIQUE INDEX jobeet_category_slug ON jobeet_category (slug);
 
+CREATE TABLE jobeet_something (
+  json_colummn1 VARCHAR(255) NOT NULL,
+  json_colummn2 VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE jobeet_job (
   id INTEGER PRIMARY KEY NOT NULL,
   category_id INTEGER NOT NULL,
